@@ -29,7 +29,7 @@ subtasks=1
 updatepaper=$2
 if [ "$updatepaper" == "1" ]; then
     echo "  $(bashcolor 1 32)(0/$subtasks)$(bashcolorend) - Update Git submodules.."
-    $gitcmd submodule update --init --remote
+    $gitcmd submodule update --init --recursive
 fi
 
 if [[ "$2" == "--resetPaper" ]]; then
@@ -45,22 +45,23 @@ echo "  $(bashcolor 1 32)(0/$subtasks)$(bashcolorend) - Apply patches of Purpur.
 echo "  "
 paperVer=$(gethead Purpur)
 paperdir
-./purpur patch
+bash -x purpur upstream
+bash -x purpur patch
 
 #cd "Paper-Server"
 #mcVer=$($mvncmd -o org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate -Dexpression=minecraft_version | sed -n -e '/^\[.*\]/ !{ /^[0-9]/ { p; q } }')
-
+#
 #echo "  $(bashcolor 1 32)(1/$subtasks)$(bashcolorend) - Import necessary sources.."
 #basedir
 #"$basedir"/scripts/importSources.sh $1
-
+#
 #minecraftversion=$(cat "$basedir"/Paper/work/BuildData/info.json | grep minecraftVersion | cut -d '"' -f 4)
 #version=$(echo -e "Paper: $paperVer\nmc-dev:$importedmcdev")
 #tag="${minecraftversion}-${mcVer}-$(echo -e $version | shasum | awk '{print $2}')"
 #echo "$tag" > "$basedir"/current-paper
-
+#
 # "$basedir"/scripts/generateImports.sh $1 # unused
-
+#
 #echo "  $(bashcolor 1 32)(1/$subtasks)$(bashcolorend) - Tagging Paper submodules.."
 #function tag {
 #    paperdir && cd $1
@@ -69,19 +70,19 @@ paperdir
 #    fi
 #    echo -e "$(date)\n\n$version" | git tag -a "$tag" -F - 2>/dev/null
 #}
-
+#
 #echo -e "$version"
-
+#
 #forcetag=0
 #if [ "$(cat "$basedir"/current-paper)" != "$tag" ]; then
 #    forcetag=1
 #fi
-
+#
 #tag Paper-API $forcetag
 #tag Paper-Server $forcetag
-
-echo "  $(bashcolor 1 32)($subtasks/$subtasks) Succeed$(bashcolorend) - Submodules have been updated, regenerated and imported, run 'rtgaming patch' to test/fix patches, and by 'rtgaming rbp' to rebuild patches that fixed with the updated upstream."
-echo "  "
-
+#
+#echo "  $(bashcolor 1 32)($subtasks/$subtasks) Succeed$(bashcolorend) - Submodules have been updated, regenerated and imported, run 'rtgaming patch' to test/fix patches, and by 'rtgaming rbp' to rebuild patches that fixed with the updated upstream."
+#echo "  "
+#
 # gitpush Paper-API $PAPER_API_REPO $tag
 # gitpush Paper-Server $PAPER_SERVER_REPO $tag

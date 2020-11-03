@@ -26,13 +26,6 @@ function applyPatch {
     branch=$3
     patch_folder=$4
 
-    # Skip if that software have no patch
-    haspatch=-f "$basedir/patches/$patch_folder/"*.patch >/dev/null 2>&1 # too many files
-	if [ ! haspatch ]; then
-	    echo "  $(bashcolor 1 33)($5/$6) Skipped$(bashcolorend) - No patch found for $target under patches/$patch_folder"
-		return
-	fi
-
     echo "  $(bashcolor 1 32)($5/$6)$(bashcolorend) - Setup upstream project.."
     cd "$basedir/$baseproject"
     $gitcmd fetch --all &> /dev/null
@@ -73,6 +66,16 @@ function applyPatch {
 	echo "  $(bashcolor 1 32)($5/$6)$(bashcolorend) - Apply patches to $target.."
 	# Abort previous applying operation
     $gitcmd am --abort >/dev/null 2>&1
+
+    cd "$basedir/patches/$patch_folder/"
+    haspatch=`ls -1 *.patch 2>/dev/null | wc -l`
+    cd "$basedir/$target" &&
+
+    if [ "$haspatch" == "0" ]; then # Skip if that software have no patch
+        echo "  $(bashcolor 1 33)($5/$6) Skipped$(bashcolorend) - No patch found for $target under patches/$patch_folder"
+        return
+    fi
+
 	# Apply our patches on top Paper in our dirs
     $gitcmd am --no-utf8 --3way --ignore-whitespace "$basedir/patches/$patch_folder/"*.patch
 

@@ -1,6 +1,6 @@
 Spigot
-Yatopia-Server
-Yatopia-API
+RTGaming-Server
+RTGaming-API
 mc-dev
 *.iml
 .settings/org.eclipse.m2e.core.prefs
@@ -11,21 +11,6 @@ yatopia-paperclip.jar
 target
 
 target/site/surefire-report.html
-/patches/Akarin/**
-/patches/Purpur/**
-/patches/Empirecraft/**
-/patches/Rainforest/**
-/patches/Origami/**
-!/patches/Purpur/server.txt
-!/patches/Purpur/api.txt
-!/patches/Empirecraft/server.txt
-!/patches/Empirecraft/api.txt
-!/patches/Akarin/server.txt
-!/patches/Akarin/api.txt
-!/patches/Rainforest/server.txt
-!/patches/Rainforest/api.txt
-!/patches/Origami/server.txt
-!/patches/Origami/api.txt
 *.jar
 
 /testserver/**

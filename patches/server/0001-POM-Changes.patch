@@ -1,0 +1,82 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: James Lyne <jim+github@not-null.co.uk>
+Date: Tue, 3 Nov 2020 18:37:28 +0000
+Subject: [PATCH] POM Changes
+
+
+diff --git a/pom.xml b/pom.xml
+index 17dbe85eb3431ccf3391de8bdece633e66a3703a..9e1daf4fb3ae3b823a01a01ff389ed4b4bbfbe31 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -1,11 +1,11 @@
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+     <modelVersion>4.0.0</modelVersion>
+-    <artifactId>purpur</artifactId>
++    <artifactId>rtgaming</artifactId>
+     <packaging>jar</packaging>
+     <version>1.16.4-R0.1-SNAPSHOT</version>
+-    <name>Purpur-Server</name>
+-    <url>https://github.com/pl3xgaming/Purpur</url>
++    <name>RTGaming-Server</name>
++    <url>https://github.com/pl3xgaming/RTGaming</url>
+ 
+     <properties>
+         <!-- <skipTests>true</skipTests> Paper - This [was] not going to end well -->
+@@ -18,16 +18,16 @@
+     </properties>
+ 
+     <parent>
+-        <groupId>net.pl3x.purpur</groupId>
+-        <artifactId>purpur-parent</artifactId>
++        <groupId>co.uk.notnull</groupId>
++        <artifactId>rtgaming-parent</artifactId>
+         <version>dev-SNAPSHOT</version>
+         <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+     <dependencies>
+         <dependency>
+-            <groupId>net.pl3x.purpur</groupId>
+-            <artifactId>purpur-api</artifactId>
++            <groupId>co.uk.notnull</groupId>
++            <artifactId>rtgaming-api</artifactId>
+             <version>${project.version}</version>
+             <scope>compile</scope>
+         </dependency>
+@@ -43,7 +43,7 @@
+             <version>${minecraft.version}-SNAPSHOT</version>
+             <scope>compile</scope>
+         </dependency>
+-        <!-- Purpur start -->
++        <!-- RTGaming start -->
+         <dependency>
+             <groupId>org.mozilla</groupId>
+             <artifactId>rhino</artifactId>
+@@ -56,7 +56,7 @@
+             <version>1.7.7.1</version>
+             <scope>compile</scope>
+         </dependency>
+-        <!-- Purpur end -->
++        <!-- RTGaming end -->
+         <dependency>
+             <groupId>net.minecrell</groupId>
+             <artifactId>terminalconsoleappender</artifactId>
+@@ -179,7 +179,7 @@
+ 
+     <!-- This builds a completely 'ready to start' jar with all dependencies inside -->
+     <build>
+-        <finalName>purpur-${minecraft.version}</finalName>
++        <finalName>rtgaming-${minecraft.version}</finalName>
+         <defaultGoal>clean install</defaultGoal> <!-- Paper -->
+         <plugins>
+             <plugin>
+@@ -187,7 +187,7 @@
+                 <artifactId>gitdescribe-maven-plugin</artifactId>
+                 <version>1.3</version>
+                 <configuration>
+-                    <outputPrefix>git-Purpur-</outputPrefix> <!-- Tuinity -->
++                    <outputPrefix>git-RTGaming-</outputPrefix> <!-- Tuinity -->
+                     <scmDirectory>..</scmDirectory>
+                 </configuration>
+                 <executions>
