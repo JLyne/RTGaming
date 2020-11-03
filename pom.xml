@@ -1,7 +1,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>xyz.nkomarn</groupId>
+    <groupId>uk.co.notnull</groupId>
     <artifactId>rtgaming-parent</artifactId>
     <version>dev-SNAPSHOT</version>
     <packaging>pom</packaging>
