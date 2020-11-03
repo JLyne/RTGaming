@@ -5,7 +5,7 @@ Subject: [PATCH] POM Changes
 
 
 diff --git a/pom.xml b/pom.xml
-index 17dbe85eb3431ccf3391de8bdece633e66a3703a..9e1daf4fb3ae3b823a01a01ff389ed4b4bbfbe31 100644
+index 17dbe85eb3431ccf3391de8bdece633e66a3703a..39a61dcb6d6c6c54a937927cd8d29b9a3cdf249c 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -1,11 +1,11 @@
@@ -29,7 +29,7 @@ index 17dbe85eb3431ccf3391de8bdece633e66a3703a..9e1daf4fb3ae3b823a01a01ff389ed4b
      <parent>
 -        <groupId>net.pl3x.purpur</groupId>
 -        <artifactId>purpur-parent</artifactId>
-+        <groupId>co.uk.notnull</groupId>
++        <groupId>uk.co.notnull</groupId>
 +        <artifactId>rtgaming-parent</artifactId>
          <version>dev-SNAPSHOT</version>
          <relativePath>../pom.xml</relativePath>
@@ -39,7 +39,7 @@ index 17dbe85eb3431ccf3391de8bdece633e66a3703a..9e1daf4fb3ae3b823a01a01ff389ed4b
          <dependency>
 -            <groupId>net.pl3x.purpur</groupId>
 -            <artifactId>purpur-api</artifactId>
-+            <groupId>co.uk.notnull</groupId>
++            <groupId>uk.co.notnull</groupId>
 +            <artifactId>rtgaming-api</artifactId>
              <version>${project.version}</version>
              <scope>compile</scope>
