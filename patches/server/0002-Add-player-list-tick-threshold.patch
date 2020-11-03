@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: James Lyne <jim+github@not-null.co.uk>
+Date: Tue, 3 Nov 2020 18:44:34 +0000
+Subject: [PATCH] Add player list tick threshold
+
+If the number of online players exceeds the threshold, the player
+list will no longer be ticked. This prevents lag spikes encountered
+during stream builds with high player counts.
+
+diff --git a/src/main/java/net/minecraft/server/PlayerList.java b/src/main/java/net/minecraft/server/PlayerList.java
+index 36dd79fc5b32c35449365823bbc2a2fa7c240c59..c917472b526690d2a45a90e4594a46de866f22c4 100644
+--- a/src/main/java/net/minecraft/server/PlayerList.java
++++ b/src/main/java/net/minecraft/server/PlayerList.java
+@@ -919,7 +919,9 @@ public abstract class PlayerList {
+     }
+ 
+     public void tick() {
+-        if (++this.w > 600) {
++        int threshold = net.pl3x.purpur.PurpurConfig.disablePlayerListTickThreshold; // RTGaming - Threshold config
++
++        if (++this.w > 600 && this.players.size() < threshold) { // RTGaming - Check threshold before ticking
+             // CraftBukkit start
+             for (int i = 0; i < this.players.size(); ++i) {
+                 final EntityPlayer target = (EntityPlayer) this.players.get(i);
+diff --git a/src/main/java/net/pl3x/purpur/PurpurConfig.java b/src/main/java/net/pl3x/purpur/PurpurConfig.java
+index 6cfc1094b67c442611b86adc3d494b2300f7ec55..45c5faf1d4fff9c928506cddfb6c79546ce68462 100644
+--- a/src/main/java/net/pl3x/purpur/PurpurConfig.java
++++ b/src/main/java/net/pl3x/purpur/PurpurConfig.java
+@@ -245,4 +245,9 @@ public class PurpurConfig {
+     private static void fixClientAdvancementLag() {
+         fixClientAdvancementLag = getBoolean("settings.fix-client-lag-from-advancements-api", fixClientAdvancementLag);
+     }
++
++    public static int disablePlayerListTickThreshold = 80;
++    private static void disablePlayerListTickThreshold() {
++        disablePlayerListTickThreshold = getInt("settings.disable-player-list-tick-threshold", disablePlayerListTickThreshold);
++    }
+ }
